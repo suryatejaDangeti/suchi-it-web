@@ -11,7 +11,7 @@ const App = () => {
     console.log(pathName);
     return (
       <>
-        {pathName !== '/Login' && pathName !== '/register' ? (
+        { pathName !== '/' && pathName !== '/Login' && pathName !== '/register' ? (
           <>
             <Navbar />
             <Outlet />
