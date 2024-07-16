@@ -35,7 +35,7 @@ const Services = () => {
                                 { 
                                     return (
                                         <div className="card card-compact bg-base-100 w-96 shadow-xl h-[100%] mx-8 hover:shadow-2xl max-[640px]:mt-4 max-[640px]:mb-4 max-[640px]:w-80">
-                                            <figure className="bg-[#02bdf2]">
+                                            <figure className={`bg-[#${service.color}]`}>
                                                 <img
                                                 className="self-center"
                                                 src={`https://suchiit.com/app_apis/uploads/${service.image}`}
