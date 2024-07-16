@@ -3,22 +3,17 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import Services from './components/services/Services';
 import Navbar from './components/Navbar/Navbar';
-import { createBrowserRouter, RouterProvider, Outlet, Navigate } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Outlet, Navigate, useLocation } from 'react-router-dom';
 
 const App = () => {
   const Layout = () => {
-    const pathName = window.location.pathname;
-    console.log(pathName);
+    const location = useLocation();
+    const noNavbarPaths = ['/', '/Login', '/register'];
+
     return (
       <>
-        { pathName !== '/' && pathName !== '/Login' && pathName !== '/register' ? (
-          <>
-            <Navbar />
-            <Outlet />
-          </>
-        ) : (
-          <Outlet />
-        )}
+        {!noNavbarPaths.includes(location.pathname) && <Navbar />}
+        <Outlet />
       </>
     );
   };
