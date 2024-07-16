@@ -39,7 +39,7 @@ export const customerServices = async() => {
         const authHeaders = {
             Authorization: authToken
         }
-        const response = await axios.get('https://suchiit.com/app_apis/auth/services.php', { headers: authHeaders });
+        const response = await axios.get('https://suchiit.com/app_apis/services/all_services.php', { headers: authHeaders });
         console.log('response', response);
         return response
     } catch(error) {

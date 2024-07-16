@@ -1,67 +1,58 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { customerServices } from "../../services/customer";
 
 
 const Services = () => {
 
+    const [service, setServices] = useState([]);
+    const [loader, setLoader] = useState(true);
+
     useEffect(() => {
         customerServices();
-    }, []);
+        (async () => {
+            const serviceData = await customerServices();
+            setServices(serviceData.data.services);
+            setLoader(false);
+        })()
 
-    const data = {
-        "status":"success",
-        "services":[
-            {
-                "id":1,
-                "title":"Training",
-                "description":"Training in software development involvesacquiring and refining skills through structured learning and practicalexperience.",
-                "status":"ON",
-                "image":"training.png",
-                "working_status":"Working",
-                "createdAt":"2024-07-1209:44:47.000000",
-                "updatedAt":"2024-07-1209:44:47.000000",
-                "color":"02bdf2"
-            },
-            {
-                "id":2,
-                "title":"Consulting",
-                "description":"Consulting involves providing expertadvice and guidance to individuals or organizations seeking solutions to specific challenges or opportunities withintheir industry or domain.",
-                "status":"ON",
-                "image":"consulting.png",
-                "working_status":"Coming Soon",
-                "createdAt":"2024-07-1209:44:47.000000",
-                "updatedAt":"2024-07-1209:44:47.000000",
-                "color":"02bdf2"
-            },
-            {
-                "id":3,
-                "title":"Solutions",
-                "description":"Solutions generally refers to the answers,strategies, or methods devised to solve problems or address challenges effectively within various contexts, such astechnology, business, or personal matters.",
-                "status":"ON",
-                "image":"solutions.png",
-                "working_status":"ComingSoon",
-                "createdAt":"2024-07-12 09:44:47.000000",
-                "updatedAt":"2024-07-12 09:44:47.000000",
-                "color":"02bdf2"
-            }
-            ]
-        }
+    }, []); 
 
     return (
-        <div className="flex justify-center items-center h-screen flex-wrap">
-            {/* <h1 className="w-full">Our services</h1> */}
-           {
-            data.services.map((service) =>  
-            { return (
-
-                <div className="w-1/4 border rounded-xl h-[60%] flex flex-col justify-center ml-4 mr-4 p-4 shadow-xl cursor-pointer hover:shadow-2xl">
-                    <img className="w-80 h-80 self-center" src = {`https://suchiit.com/app_apis/uploads/${service.image}`} alt= "" />
-                    <h1 className="text-lg font-bold mt-1 mb-1">{service.title}</h1>
-                    <p className="text-sm mt-1 mb-1">{service.description}</p>
-                 </div>
-            )
-            })
-           }
+        <div className="flex flex-col w-full justify-center items-center max-[640px]:flex-col max-[640px]:h-[100%] mt-[10%] h-96">
+            {
+                loader ?
+                <>
+                    <span className="loading loading-spinner loading-lg text-[#02bdf2]"></span>
+                </> :
+                <>
+                    <div className="w-full flex flex-col justify-center items-center">
+                        <h1 className="text-4xl font-bold max-[640px]:text-2xl">Our services</h1>
+                        <hr className="w-[8%] border border-[#02bdf2] mt-2 mb-6 max-[640px]:w-[15%] max-[640px]:mb-3" />
+                    </div>
+                    <div className="flex w-full justify-center items-center max-[640px]:flex-col max-[640px]:h-[100%]">
+                        {
+                            service.map((service) =>  
+                                { 
+                                    return (
+                                        <div className="card card-compact bg-base-100 w-96 shadow-xl h-[100%] mx-8 hover:shadow-2xl max-[640px]:mt-4 max-[640px]:mb-4 max-[640px]:w-80">
+                                            <figure className="bg-[#02bdf2]">
+                                                <img
+                                                className="self-center"
+                                                src={`https://suchiit.com/app_apis/uploads/${service.image}`}
+                                                alt={service.title} />
+                                            </figure>
+                                            <div className="card-body">
+                                                <h2 className="card-title">{service.title}</h2>
+                                                <p>{service.description}</p>
+                                            </div>
+                                        </div>
+                                    )
+                                }
+                            )
+                        }
+                    </div>
+                </>
+            }
         </div>
     )
 }

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { customerUpdate } from "../../modules/customer/customer";
 import { customerLogin } from "../../services/customer";
 import { useNavigate } from "react-router-dom";
+import LoginSideContent from "../LoginSideContent/LoginSideContent";
 
 const Login = () => {
 
@@ -32,9 +33,7 @@ const Login = () => {
 
     return (
         <div className="flex items-center h-screen">
-            <div className="bg-[#0154A5] w-1/2 max-[640px]:hidden h-screen flex flex-col justify-center items-center">
-                <img className="w-1/2 h-1/2 mb-2 max-[680px]:w-1/2" src = "/loginbg.png" alt="logo" />
-            </div>
+            <LoginSideContent />
             <div className="flex flex-col w-1/2  max-[680px]:w-full">
                 <form 
                     onChange={formOnchange}
@@ -42,6 +41,8 @@ const Login = () => {
                     className="flex flex-col justify-center items-center h-[90vh]"
                 >
                    <img className="w-1/4 rounded-md" src="/suchiLogo.png" alt="logo" />
+                   <h1 className="text-4xl font-bold max-[640px]:text-2xl">Login</h1>
+                        <hr className="w-[8%] border border-[#02bdf2] mt-2 mb-6 max-[640px]:w-[15%] max-[640px]:mb-3" />
                     <label className="text-[#000] w-full max-w-xs text-left mt-1 mb-1 ml-2 text-sm font-bold">Email</label>
                     <input 
                         type="text" 

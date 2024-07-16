@@ -1,31 +1,48 @@
-import logo from './logo.svg';
 import './App.css';
 import Login from './components/Login/Login';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
 import Register from './components/Register/Register';
 import Services from './components/services/Services';
-
+import Navbar from './components/Navbar/Navbar';
+import { createBrowserRouter, RouterProvider, Outlet, Navigate } from 'react-router-dom';
 
 const App = () => {
+  const Layout = () => {
+    const pathName = window.location.pathname;
+    console.log(pathName);
+    return (
+      <>
+        {pathName !== '/Login' && pathName !== '/register' ? (
+          <>
+            <Navbar />
+            <Outlet />
+          </>
+        ) : (
+          <Outlet />
+        )}
+      </>
+    );
+  };
 
   const router = createBrowserRouter([
     {
       path: '/',
+      element: <Layout />,
       children: [
         {
-          path: '/login',
-          element: <Login />
+          path: '/',
+          element: <Navigate to="/Login" replace={true} />,
+        },
+        {
+          path: '/Login',
+          element: <Login />,
         },
         {
           path: '/register',
-          element: <Register />
+          element: <Register />,
         },
         {
           path: '/services',
-          element: <Services />
+          element: <Services />,
         },
         {
           path: '*',
@@ -35,9 +52,7 @@ const App = () => {
     },
   ]);
 
-  return (
-    <RouterProvider router={router} />
-  )
-}
+  return <RouterProvider router={router} />;
+};
 
 export default App;
