@@ -33,7 +33,7 @@ export const registerCustomer = async(customerDetails) => {
 }
 
 export const customerServices = async() => {
-    const authToken = store.getState().customer.customer.access_token
+    const authToken = store.getState().customer?.customer?.access_token
     console.log('auth', authToken);
     try {
         const authHeaders = {

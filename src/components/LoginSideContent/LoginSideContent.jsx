@@ -4,7 +4,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 
 const LoginSideContent = () => {
     return (
-        <div className="bg-[#0154A5] w-1/2 max-[640px]:hidden h-screen flex flex-col justify-center items-center">
+        <div className="bg-primary w-1/2 max-[640px]:hidden h-screen flex flex-col justify-center items-center">
                 <div className="w-[400px] h-[400px]">
                     <img className="min-w-full max-w-full" src = "/loginbg.png" alt="logo" />
                     <div className="mt-10">

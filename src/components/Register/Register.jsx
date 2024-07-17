@@ -3,6 +3,7 @@ import { useState } from "react";
 import { registerCustomer } from "../../services/customer";
 import { useNavigate } from "react-router-dom";
 import LoginSideContent from "../LoginSideContent/LoginSideContent";
+import ValidatedInput from "../ValidatedInput/ValidatedInput";
 
 
 const Register = () => {
@@ -44,59 +45,65 @@ const Register = () => {
                         onSubmit={registerFormOnsubmit}
                         className="flex flex-col justify-center items-center h-[90vh]"
                     >
-                        <h1 className="text-4xl font-bold max-[640px]:text-2xl">Register</h1>
-                        <hr className="w-[8%] border border-[#02bdf2] mt-2 mb-6 max-[640px]:w-[15%] max-[640px]:mb-3" />
+                        <h1 className="text-4xl font-normal max-[640px]:text-2xl">Register</h1>
+                        <hr className="w-[8%] border border-primary mt-2 mb-6 max-[640px]:w-[15%] max-[640px]:mb-3" />
                         {/* <img className="w-1/4" src="/suchiLogo.png" alt="logo" /> */}
-                        <label className="text-[#000] w-full max-w-xs text-left mt-1 mb-1 ml-2 text-sm font-bold">First Name</label>
-                        <input 
+                        <ValidatedInput 
                             type="text" 
                             placeholder="First Name" 
                             className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm hover:outline-2" 
                             name='firstName'
                             value={registerFormDetails.firstName}
+                            label="First Name"
+                            required
                         />
-                        <label className="text-[#000] w-full max-w-xs text-left mt-1 mb-1 ml-2 text-sm font-bold">Last Name</label>
-                        <input 
+                        <ValidatedInput 
                             type="text" 
                             placeholder="Last Name" 
                             className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm hover:outline-2" 
                             name='lastName'
+                            label="Last Name"
                             value={registerFormDetails.lastName}
+                            required
                         />
-                        <label className="text-[#000] w-full max-w-xs text-left mt-1 mb-1 ml-2 text-sm font-bold">Email</label>
-                        <input 
+                        <ValidatedInput 
                             type="text" 
                             placeholder="Email" 
                             className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm hover:outline-2" 
                             name='email'
+                            label="Email"
                             value={registerFormDetails.email}
+                            required
                         />
-                        <label className="text-[#000] w-full max-w-xs text-left mt-1 mb-1 ml-2 text-sm font-bold">Mobile Number</label>
-                        <input 
+                        <ValidatedInput 
                             type="number" 
                             placeholder="Mobile Number" 
+                            label="Mobile Number"
                             className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm" 
                             name='mobile'
                             value={registerFormDetails.mobile}
+                            required
                             />
-                        <label className="text-[#000] w-full max-w-xs text-left mt-1 mb-1 ml-2 text-sm font-bold">Password</label>
-                        <input 
+                        <ValidatedInput 
                             type="password" 
-                            placeholder="Password" 
+                            placeholder="Password"
+                            label="Password"
                             className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm" 
                             name='password'
                             value={registerFormDetails.password}
+                            required
                             />
-                        <label className="text-[#000] w-full max-w-xs text-left mt-1 mb-1 ml-2 text-sm font-bold">Confirm Password</label>
-                        <input 
+                        <ValidatedInput 
                             type="password" 
                             placeholder="Confirm password" 
+                            label="Confirm password"
                             className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm" 
                             name='confirmPassword'
                             value={registerFormDetails.confirmPassword}
+                            required
                             />
-                        <button className="btn mt-2 mb-2 bg-[#02BDF2] w-full max-w-xs text-white hover:bg-[#02BDF2]">Register</button>
-                        <p className="text-[#9ca3af] text-sm mt-2">Have an account ? <Link className="text-[#02BDF2]" to="/Login">Login</Link></p>
+                        <button className="btn mt-2 mb-2 bg-primary w-full max-w-xs text-white hover:bg-primary">Register</button>
+                        <p className="text-[#9ca3af] text-sm mt-2">Have an account ? <Link className="text-primary" to="/Login">Login</Link></p>
                     </form>
                 </div>
         </div>

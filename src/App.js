@@ -4,12 +4,10 @@ import Register from './components/Register/Register';
 import Services from './components/services/Services';
 import Navbar from './components/Navbar/Navbar';
 import { createBrowserRouter, RouterProvider, Outlet, Navigate, useLocation } from 'react-router-dom';
-
 const App = () => {
   const Layout = () => {
     const location = useLocation();
     const noNavbarPaths = ['/', '/Login', '/register'];
-
     return (
       <>
         {!noNavbarPaths.includes(location.pathname) && <Navbar />}
@@ -17,7 +15,6 @@ const App = () => {
       </>
     );
   };
-
   const router = createBrowserRouter([
     {
       path: '/',
@@ -46,8 +43,12 @@ const App = () => {
       ],
     },
   ]);
-
   return <RouterProvider router={router} />;
 };
-
 export default App;
+
+
+
+
+
+

@@ -6,6 +6,7 @@ import { customerUpdate } from "../../modules/customer/customer";
 import { customerLogin } from "../../services/customer";
 import { useNavigate } from "react-router-dom";
 import LoginSideContent from "../LoginSideContent/LoginSideContent";
+import ValidatedInput from "../ValidatedInput/ValidatedInput";
 
 const Login = () => {
 
@@ -40,28 +41,29 @@ const Login = () => {
                     onSubmit={formOnsubmit}
                     className="flex flex-col justify-center items-center h-[90vh]"
                 >
-                   <img className="w-1/4 rounded-md" src="/suchiLogo.png" alt="logo" />
-                   <h1 className="text-4xl font-bold max-[640px]:text-2xl">Login</h1>
-                        <hr className="w-[8%] border border-[#02bdf2] mt-2 mb-6 max-[640px]:w-[15%] max-[640px]:mb-3" />
-                    <label className="text-[#000] w-full max-w-xs text-left mt-1 mb-1 ml-2 text-sm font-bold">Email</label>
-                    <input 
-                        type="text" 
-                        placeholder="Enter your email" 
+                   <img className="w-[70px] h-[70px] mb-5 rounded-md" src="/suchiLogo.png" alt="logo" />
+                   <h1 className="text-4xl font-normal max-[640px]:text-2xl">Login</h1>
+                        <hr className="w-[8%] border border-primary mt-2 mb-6 max-[640px]:w-[15%] max-[640px]:mb-3" />
+                    <ValidatedInput 
+                        type="email" 
+                        placeholder="Email" 
                         className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm hover:outline-2" 
                         name='email'
+                        label="Email"
                         value={formDetails.email}
+                        required
                     />
-                    <label className="text-[#000] w-full max-w-xs text-left mt-1 mb-1 ml-2 text-sm font-bold">Password</label>
-                    <input 
-                        type="password" 
-                        placeholder="Enter your password" 
-                        className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm" 
-                        name='password'
+                    <ValidatedInput 
+                        name = "password"
+                        type = "password"
+                        label = "Password"
+                        placeholder="password"
                         value={formDetails.password}
+                        required
                     />
-                    <Link className="text-[#02BDF2] w-full max-w-xs text-right mt-1 mb-1 text-sm" to="">Forgot password</Link>
-                    <button className="btn mt-2 mb-2 bg-[#02BDF2] w-full max-w-xs text-white hover:bg-[#02BDF2]">Login</button>
-                    <p className="text-[#9ca3af] text-sm mt-2">Don't have an account yet? <Link className="text-[#02BDF2]" to="/register">sign up</Link></p>
+                    <Link className="text-primary w-full max-w-xs text-right mt-1 mb-1 text-sm" to="">Forgot password</Link>
+                    <button className="btn mt-2 mb-2 bg-primary w-full max-w-xs text-white hover:bg-primary">Login</button>
+                    <p className="text-[#9ca3af] text-sm mt-2">Don't have an account yet? <Link className="text-primary" to="/register">sign up</Link></p>
                 </form>
             </div> 
         </div>
