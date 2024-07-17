@@ -14,7 +14,6 @@ const LoginSideContent = () => {
                             showArrows={false}
                             showIndicators={false}
                             showStatus={false}
-
                         >
                             <p className="text-xl font-bold text-white">Hello in login page</p>
                             <p className="text-xl font-bold text-white">Login or Register</p>

@@ -1,4 +1,5 @@
 import axios from "axios"
+import { toast } from "react-toastify";
 import { notification } from "../notification/notification";
 import { store } from "../store";
 
@@ -11,6 +12,7 @@ export const customerLogin = async(customerDetails) => {
         const response = await axios.post('https://suchiit.com/app_apis/auth/login.php', formData)
         return response.data
     } catch(error) {
+        toast.error(error?.response?.data?.message);
         notification(error.response.data)
     }
     
@@ -27,6 +29,9 @@ export const registerCustomer = async(customerDetails) => {
         const response = await axios.post('https://suchiit.com/app_apis/auth/register.php', formData)
         return response
     } catch(error) {
+        console.log(error?.response?.data?.error)
+        // debugger
+        toast.error(error?.response?.data?.error);
         notification(error.response.data)
     }
     
@@ -43,7 +48,7 @@ export const customerServices = async() => {
         console.log('response', response);
         return response
     } catch(error) {
-        // notification(error.response.data)
+        toast.error(error?.response?.data?.message);
     }
     
 }

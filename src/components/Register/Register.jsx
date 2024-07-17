@@ -4,6 +4,7 @@ import { registerCustomer } from "../../services/customer";
 import { useNavigate } from "react-router-dom";
 import LoginSideContent from "../LoginSideContent/LoginSideContent";
 import ValidatedInput from "../ValidatedInput/ValidatedInput";
+import { toast } from "react-toastify";
 
 
 const Register = () => {
@@ -17,21 +18,35 @@ const Register = () => {
         password: '',
         confirmPassword: ''
     }
-
+    const loader = <span className="loading loading-spinner loading-lg text-white"></span>
     const [registerFormDetails, setRegisterFormDetails] = useState(defaultRegisterFormDetails);
+    const [buttonDisable, setButtonDisable] = useState(true);
+    const [showLoader, setShowLoader] = useState(false)
 
     const registerFormOnchange = (registerFormData) => {
         const { name, value} = registerFormData.target;
         setRegisterFormDetails({...registerFormDetails, [name]: value});
+        if(registerFormDetails.firstName && registerFormDetails.lastName && registerFormDetails.email && registerFormDetails.mobile && registerFormDetails.password && registerFormDetails.confirmPassword) {
+            setButtonDisable(false)
+        }
     }
 
     const registerFormOnsubmit = async (event) => {
         event.preventDefault()
         if(registerFormDetails.password === registerFormDetails.confirmPassword) {
-            const registeredCustomer = await registerCustomer(registerFormDetails);
-            if(registeredCustomer.status === 200) {
-                navigate('/login');
+            try {
+                setShowLoader(true);
+                const registeredCustomer = await registerCustomer(registerFormDetails);
+                if(registeredCustomer.status === 200) {
+                    navigate('/Login');
+                }
+            } catch (error) {
+
             }
+            setShowLoader(false);
+            
+        } else {
+            toast.error("password and confirm password should be same")
         }
         
     }
@@ -67,7 +82,7 @@ const Register = () => {
                             required
                         />
                         <ValidatedInput 
-                            type="text" 
+                            type="email" 
                             placeholder="Email" 
                             className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm hover:outline-2" 
                             name='email'
@@ -102,7 +117,7 @@ const Register = () => {
                             value={registerFormDetails.confirmPassword}
                             required
                             />
-                        <button className="btn mt-2 mb-2 bg-primary w-full max-w-xs text-white hover:bg-primary">Register</button>
+                        <button className="btn mt-2 mb-2 bg-primary w-full max-w-xs text-white hover:bg-primary" disabled={buttonDisable}>{showLoader ? loader : "Register"}</button>
                         <p className="text-[#9ca3af] text-sm mt-2">Have an account ? <Link className="text-primary" to="/Login">Login</Link></p>
                     </form>
                 </div>

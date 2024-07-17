@@ -4,6 +4,9 @@ import Register from './components/Register/Register';
 import Services from './components/services/Services';
 import Navbar from './components/Navbar/Navbar';
 import { createBrowserRouter, RouterProvider, Outlet, Navigate, useLocation } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const App = () => {
   const Layout = () => {
     const location = useLocation();
@@ -12,6 +15,7 @@ const App = () => {
       <>
         {!noNavbarPaths.includes(location.pathname) && <Navbar />}
         <Outlet />
+        <ToastContainer />
       </>
     );
   };
