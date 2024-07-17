@@ -20,7 +20,7 @@ const Login = () => {
     const [buttonDisable, setButtonDisable] = useState(true);
     const [showLoader, setShowLoader] = useState(false)
 
-    const loader = <span className="loading loading-spinner loading-lg text-white"></span>
+    const loader = <span className="loading loading-spinner loading-md text-white"></span>
 
     const formOnchange = (formData) => {
         const { name, value} = formData.target;
