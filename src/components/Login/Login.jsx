@@ -9,6 +9,7 @@ import LoginSideContent from "../LoginSideContent/LoginSideContent";
 import ValidatedInput from "../ValidatedInput/ValidatedInput";
 import Footer from "../Footer/Footer";
 import { toast } from "react-toastify";
+import { notificationError } from "../../notification/notification";
 
 const Login = () => {
 
@@ -34,10 +35,10 @@ const Login = () => {
             setShowLoader(true)
         }
         if(!formDetails.email) {
-                toast.error("Email field is empty")
+            notificationError("Email field is empty")
             } 
             if (!formDetails.password) {
-                toast.error("password field is empty")
+                notificationError("password field is empty")
             }
         if(formDetails.email !== "" && formDetails.password !== "") {
             const customerData = await customerLogin(formDetails);

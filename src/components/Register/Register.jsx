@@ -6,6 +6,7 @@ import LoginSideContent from "../LoginSideContent/LoginSideContent";
 import ValidatedInput from "../ValidatedInput/ValidatedInput";
 import { toast } from "react-toastify";
 import { notificationError } from "../../notification/notification";
+import Footer from "../Footer/Footer";
 
 
 const Register = () => {
@@ -69,75 +70,78 @@ const Register = () => {
     }
 
     return (
-        <div className="flex items-center h-screen">
-            <LoginSideContent />
-            <div className="flex flex-col w-1/2  max-[680px]:w-full">
-                <form 
-                        onChange={registerFormOnchange}
-                        onSubmit={registerFormOnsubmit}
-                        className="flex flex-col justify-center items-center h-[90vh]"
-                    >
-                        <h1 className="text-4xl font-normal max-[640px]:text-2xl">Register</h1>
-                        <hr className="w-[8%] border border-primary mt-2 mb-6 max-[640px]:w-[15%] max-[640px]:mb-3" />
-                        {/* <img className="w-1/4" src="/suchiLogo.png" alt="logo" /> */}
-                        <ValidatedInput 
-                            type="text" 
-                            placeholder="First Name" 
-                            className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm hover:outline-2" 
-                            name='firstName'
-                            value={registerFormDetails.firstName}
-                            label="First Name"
-                            required
-                        />
-                        <ValidatedInput 
-                            type="text" 
-                            placeholder="Last Name" 
-                            className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm hover:outline-2" 
-                            name='lastName'
-                            label="Last Name"
-                            value={registerFormDetails.lastName}
-                            required
-                        />
-                        <ValidatedInput 
-                            type="email" 
-                            placeholder="Email" 
-                            className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm hover:outline-2" 
-                            name='email'
-                            label="Email"
-                            value={registerFormDetails.email}
-                            required
-                        />
-                        <ValidatedInput 
-                            type="number" 
-                            placeholder="Mobile Number" 
-                            label="Mobile Number"
-                            className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm" 
-                            name='mobile'
-                            value={registerFormDetails.mobile}
-                            required
+        <div className="h-screen">
+            <div className="flex items-center h-screen">
+                <LoginSideContent />
+                <div className="flex flex-col w-1/2  max-[680px]:w-full">
+                    <form 
+                            onChange={registerFormOnchange}
+                            onSubmit={registerFormOnsubmit}
+                            className="flex flex-col justify-center items-center h-[90vh]"
+                        >
+                            <h1 className="text-4xl font-normal max-[640px]:text-2xl">Register</h1>
+                            <hr className="w-[8%] border border-primary mt-2 mb-6 max-[640px]:w-[15%] max-[640px]:mb-3" />
+                            {/* <img className="w-1/4" src="/suchiLogo.png" alt="logo" /> */}
+                            <ValidatedInput 
+                                type="text" 
+                                placeholder="First Name" 
+                                className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm hover:outline-2" 
+                                name='firstName'
+                                value={registerFormDetails.firstName}
+                                label="First Name"
+                                required
                             />
-                        <ValidatedInput 
-                            type="password" 
-                            placeholder="Password"
-                            label="Password"
-                            className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm" 
-                            name='password'
-                            value={registerFormDetails.password}
-                            required
+                            <ValidatedInput 
+                                type="text" 
+                                placeholder="Last Name" 
+                                className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm hover:outline-2" 
+                                name='lastName'
+                                label="Last Name"
+                                value={registerFormDetails.lastName}
+                                required
                             />
-                        <ValidatedInput 
-                            type="password" 
-                            placeholder="Confirm password" 
-                            label="Confirm password"
-                            className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm" 
-                            name='confirmPassword'
-                            value={registerFormDetails.confirmPassword}
-                            required
+                            <ValidatedInput 
+                                type="email" 
+                                placeholder="Email" 
+                                className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm hover:outline-2" 
+                                name='email'
+                                label="Email"
+                                value={registerFormDetails.email}
+                                required
                             />
-                        <button className="btn mt-2 mb-2 bg-primary w-full max-w-xs text-white hover:bg-primary">{showLoader ? loader : "Register"}</button>
-                        <p className="text-[#9ca3af] text-sm mt-2">Have an account ? <Link className="text-primary" to="/Login">Login</Link></p>
-                    </form>
-                </div>
+                            <ValidatedInput 
+                                type="number" 
+                                placeholder="Mobile Number" 
+                                label="Mobile Number"
+                                className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm" 
+                                name='mobile'
+                                value={registerFormDetails.mobile}
+                                required
+                                />
+                            <ValidatedInput 
+                                type="password" 
+                                placeholder="Password"
+                                label="Password"
+                                className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm" 
+                                name='password'
+                                value={registerFormDetails.password}
+                                required
+                                />
+                            <ValidatedInput 
+                                type="password" 
+                                placeholder="Confirm password" 
+                                label="Confirm password"
+                                className="input input-bordered w-full max-w-xs bg-transparent mt-1 mb-1 text-sm" 
+                                name='confirmPassword'
+                                value={registerFormDetails.confirmPassword}
+                                required
+                                />
+                            <button className="btn mt-2 mb-2 bg-primary w-full max-w-xs text-white hover:bg-primary">{showLoader ? loader : "Register"}</button>
+                            <p className="text-[#9ca3af] text-sm mt-2">Have an account ? <Link className="text-primary" to="/Login">Login</Link></p>
+                        </form>
+                    </div>
+            </div>
+            <Footer />
         </div>
     )
 }
