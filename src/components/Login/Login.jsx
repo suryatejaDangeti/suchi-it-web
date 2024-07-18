@@ -45,8 +45,7 @@ const Login = () => {
     }
 
     return (
-        <div className="h-scree
-        ">
+        <div className="h-screen">
             <div className="flex items-center h-screen">
                 <LoginSideContent />
                 <div className="flex flex-col w-1/2  max-[680px]:w-full">

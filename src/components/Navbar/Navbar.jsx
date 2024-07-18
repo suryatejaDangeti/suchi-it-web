@@ -68,19 +68,19 @@ const Navbar = () => {
             <div className="hidden sm:block sm:ml-6">
               <div className="flex space-x-4">
                 <Link
-                  to="/"
+                  to="/about"
                   className="text-white hover:bg-white hover:text-black px-3 py-2 rounded-md text-sm font-medium"
                 >
                   About us
                 </Link>
                 <Link
-                  to="/"
+                  to="/services"
                   className="text-white hover:bg-white hover:text-black px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Services
                 </Link>
                 <Link
-                  to="/"
+                  to="/payments"
                   className="text-white hover:bg-white hover:text-black px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Payments

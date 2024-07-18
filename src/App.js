@@ -6,11 +6,15 @@ import Navbar from './components/Navbar/Navbar';
 import { createBrowserRouter, RouterProvider, Outlet, Navigate, useLocation } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import About from './components/About/About';
+import Payments from './components/Payments/Payments';
+import TermsAndConditions from './components/TermsAndConditions/TermsAndConditions';
+import Privacy from './components/Privacy/Privacy';
 
 const App = () => {
   const Layout = () => {
     const location = useLocation();
-    const noNavbarPaths = ['/', '/Login', '/register'];
+    const noNavbarPaths = ['/', '/Login', '/register', '/terms', '/privacy'];
     return (
       <>
         {!noNavbarPaths.includes(location.pathname) && <Navbar />}
@@ -39,6 +43,22 @@ const App = () => {
         {
           path: '/services',
           element: <Services />,
+        },
+        {
+          path: '/about',
+          element: <About />
+        },
+        {
+          path: '/payments',
+          element: <Payments />
+        },
+        {
+          path:'/terms',
+          element: <TermsAndConditions />
+        },
+        {
+          path: '/privacy',
+          element: <Privacy />
         },
         {
           path: '*',
