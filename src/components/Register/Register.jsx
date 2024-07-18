@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import LoginSideContent from "../LoginSideContent/LoginSideContent";
 import ValidatedInput from "../ValidatedInput/ValidatedInput";
 import { toast } from "react-toastify";
+import { notificationError } from "../../notification/notification";
 
 
 const Register = () => {
@@ -20,20 +21,16 @@ const Register = () => {
     }
     const loader = <span className="loading loading-spinner loading-md text-white"></span>
     const [registerFormDetails, setRegisterFormDetails] = useState(defaultRegisterFormDetails);
-    const [buttonDisable, setButtonDisable] = useState(true);
     const [showLoader, setShowLoader] = useState(false)
 
     const registerFormOnchange = (registerFormData) => {
         const { name, value} = registerFormData.target;
         setRegisterFormDetails({...registerFormDetails, [name]: value});
-        if(registerFormDetails.firstName && registerFormDetails.lastName && registerFormDetails.email && registerFormDetails.mobile && registerFormDetails.password && registerFormDetails.confirmPassword) {
-            setButtonDisable(false)
-        }
     }
 
     const registerFormOnsubmit = async (event) => {
         event.preventDefault()
-        if(registerFormDetails.password === registerFormDetails.confirmPassword) {
+        if(registerFormDetails.firstName && registerFormDetails.lastName && registerFormDetails.email && registerFormDetails.mobile && registerFormDetails.password && registerFormDetails.confirmPassword && registerFormDetails.password === registerFormDetails.confirmPassword) {
             try {
                 setShowLoader(true);
                 const registeredCustomer = await registerCustomer(registerFormDetails);
@@ -46,7 +43,27 @@ const Register = () => {
             setShowLoader(false);
             
         } else {
-            toast.error("password and confirm password should be same")
+            if(!registerFormDetails.firstName) {
+                notificationError("FirstName field is required");
+            }
+            if(!registerFormDetails.lastName) {
+                notificationError("LastName field is required");
+            }
+            if(!registerFormDetails.email) {
+                notificationError("Email field is required");
+            }
+            if(registerFormDetails.mobile) {
+                notificationError("Mobile number field is required");
+            }
+            if(!registerFormDetails.password) {
+                notificationError("Password field is required");
+            }
+            if(!registerFormDetails.confirmPassword) {
+                notificationError("Confirm password field is required");
+            }
+            if(registerFormDetails.password !== registerFormDetails.confirmPassword) {
+                notificationError("password and confirm password should be same");
+            }
         }
         
     }
@@ -117,7 +134,7 @@ const Register = () => {
                             value={registerFormDetails.confirmPassword}
                             required
                             />
-                        <button className="btn mt-2 mb-2 bg-primary w-full max-w-xs text-white hover:bg-primary" disabled={buttonDisable}>{showLoader ? loader : "Register"}</button>
+                        <button className="btn mt-2 mb-2 bg-primary w-full max-w-xs text-white hover:bg-primary">{showLoader ? loader : "Register"}</button>
                         <p className="text-[#9ca3af] text-sm mt-2">Have an account ? <Link className="text-primary" to="/Login">Login</Link></p>
                     </form>
                 </div>

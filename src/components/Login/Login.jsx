@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import LoginSideContent from "../LoginSideContent/LoginSideContent";
 import ValidatedInput from "../ValidatedInput/ValidatedInput";
 import Footer from "../Footer/Footer";
+import { toast } from "react-toastify";
 
 const Login = () => {
 
@@ -18,7 +19,6 @@ const Login = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const [formDetails, setFormDetails] = useState(defaultFormDetails);
-    const [buttonDisable, setButtonDisable] = useState(true);
     const [showLoader, setShowLoader] = useState(false)
 
     const loader = <span className="loading loading-spinner loading-md text-white"></span>
@@ -26,14 +26,19 @@ const Login = () => {
     const formOnchange = (formData) => {
         const { name, value} = formData.target;
         setFormDetails({...formDetails, [name]: value});
-        if(formDetails.email && formDetails.password) {
-            setButtonDisable(false)
-        }
     }
 
     const formOnsubmit = async (event) => {
         event.preventDefault()
-        setShowLoader(true)
+        if(formDetails.email && formDetails.password) {
+            setShowLoader(true)
+        }
+        if(!formDetails.email) {
+                toast.error("Email field is empty")
+            } 
+            if (!formDetails.password) {
+                toast.error("password field is empty")
+            }
         if(formDetails.email !== "" && formDetails.password !== "") {
             const customerData = await customerLogin(formDetails);
             if(customerData) {
@@ -75,7 +80,7 @@ const Login = () => {
                             required
                         />
                         <Link className="text-primary w-full max-w-xs text-right mt-1 mb-1 text-sm" to="">Forgot password</Link>
-                        <button className="btn mt-2 mb-2 bg-primary w-full max-w-xs text-white hover:bg-primary" disabled={buttonDisable}>{showLoader ? loader : "Login"}</button>
+                        <button className="btn mt-2 mb-2 bg-primary w-full max-w-xs text-white hover:bg-primary">{showLoader ? loader : "Login"}</button>
                         <p className="text-[#9ca3af] text-sm mt-2">Don't have an account yet? <Link className="text-primary" to="/register">sign up</Link></p>
                     </form>
                 </div>

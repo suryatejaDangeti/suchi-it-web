@@ -1,5 +1,6 @@
+import { toast } from "react-toastify"
 
 
-export const notification = (error) => {
-    console.log(error);
+export const notificationError = (error) => {
+    toast.error(error)
 }
