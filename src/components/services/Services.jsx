@@ -32,7 +32,7 @@ const Services = () => {
                 </> :
                 <>
                     <div className="w-full flex flex-col justify-center items-center">
-                        <h1 className="text-4xl font-bold max-[640px]:text-2xl">Our Services</h1>
+                        <h1 className="text-4xl font-bold max-[640px]:text-2xl">Our services</h1>
                         <hr className="w-[8%] border border-primary mt-2 mb-12 max-[640px]:w-[15%] max-[640px]:mb-3" />
                     </div>
                     <div className="flex w-full justify-center items-center max-[640px]:flex-col max-[640px]:h-[100%]">
