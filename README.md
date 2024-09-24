@@ -1,3 +1,26 @@
+# Login page
+  # Desktop view
+  
+    ![image](https://github.com/user-attachments/assets/e6fb3488-e6c5-405a-b1ee-e4abdc12b79d)
+    
+  # Mobile view
+  
+    ![image](https://github.com/user-attachments/assets/039effd0-b439-4a83-85f3-74da49e77794)
+    
+# Register page
+
+ # Desktop view
+ 
+    ![image](https://github.com/user-attachments/assets/c05b6467-3609-48d8-834b-aca4cac65b70)
+
+  # Mobile view
+  
+    ![image](https://github.com/user-attachments/assets/860dbb8a-33c0-45b6-9129-1c931da9c563)
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
