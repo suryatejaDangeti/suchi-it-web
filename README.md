@@ -10,11 +10,8 @@
  Desktop view
     ![image](https://github.com/user-attachments/assets/c05b6467-3609-48d8-834b-aca4cac65b70)
 
-  Mobile view
-  
+  Mobile view 
     ![image](https://github.com/user-attachments/assets/860dbb8a-33c0-45b6-9129-1c931da9c563)
-
-
 
 
 
