@@ -1,6 +1,5 @@
 # Login page
   Desktop view
-  
     ![image](https://github.com/user-attachments/assets/e6fb3488-e6c5-405a-b1ee-e4abdc12b79d)
     
   # Mobile view
